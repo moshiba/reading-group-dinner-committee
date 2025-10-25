@@ -28,6 +28,7 @@ def compile_slides():
 def sort_places(file_name):
     """Sort the list of places
     """
+    assert pathlib.Path(file_name).is_file()
 
     query = (
         pl.scan_csv(file_name)  #

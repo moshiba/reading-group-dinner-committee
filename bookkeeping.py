@@ -2,10 +2,19 @@
 
 import polars as pl
 
-query = (
-    pl.scan_csv(file_name := "places.csv")  #
-    .sort(["been", "name", "award"])  #
-)
-df = query.collect()
-assert df["name"].is_unique().all(), "{key: name} is not unique"
-df.write_csv(file_name)
+
+def sort_places(file_name):
+    """Sort the list of places
+    """
+
+    query = (
+        pl.scan_csv(file_name)  #
+        .sort(["been", "name", "award"])  #
+    )
+    df = query.collect()
+    assert df["name"].is_unique().all(), "{key: name} is not unique"
+    df.write_csv(file_name)
+
+
+if __name__ == "__main__":
+    sort_places("places.csv")

@@ -1,4 +1,16 @@
-"""Sorts and formats config/data"""
+"""Maintains stuff
+
+Files:
+- places.csv: source of truth
+- db.csv: places in the city, populated with Google Maps info, used for slides
+
+Workflow:
+    - read places.csv
+    - extend db.csv entries
+    - update db.csv info
+    - compile slides
+    - compile trip info
+"""
 
 import polars as pl
 
